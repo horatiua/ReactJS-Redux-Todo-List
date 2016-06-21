@@ -10,10 +10,15 @@ class ModalAddListComponent extends React.Component {
     this.handleNameChange = this.handleNameChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleClose = this.handleClose.bind(this);
+    this.handleCloseState = this.handleCloseState.bind(this);
   }
 
   componentWillMount() {
     this.handleClose();
+
+    jQuery('body').on('hidden.bs.modal', '#modalAddList', jQuery.proxy(function() {
+      this.handleCloseState();
+    }, this));
   }
 
   componentWillReceiveProps(nextProps) {
@@ -68,6 +73,12 @@ class ModalAddListComponent extends React.Component {
       buttonText: 'Add',
       title: 'Add list'
     });
+  }
+
+  handleCloseState() {
+    if(this.props.todos.listModal) {
+      this.props.actions.listModal(null);
+    }
   }
 
   render() {

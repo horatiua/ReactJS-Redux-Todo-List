@@ -143,7 +143,7 @@ module.exports = function(state = initialState, action) {
       return Object.assign({}, state, {
         activeList: activeList,
         lists: lists,
-        listModal: null,
+        listModal: null
       });
     }
 
