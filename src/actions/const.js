@@ -1,0 +1,10 @@
+/* Populated by react-webpack-redux:action */
+export const ADD_TODO = 'ADD_TODO';
+export const ADD_LIST = 'ADD_LIST';
+export const DELETE_TODO = 'DELETE_TODO';
+export const DELETE_LIST = 'DELETE_LIST';
+export const EDIT_TODO = 'EDIT_TODO';
+export const EDIT_LIST = 'EDIT_LIST';
+export const COMPLETE_TODO = 'COMPLETE_TODO';
+export const SELECT_LIST = 'SELECT_LIST';
+export const LIST_MODAL = 'LIST_MODAL';
