@@ -10,12 +10,16 @@ import React, {
 } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router';
 import Main from '../components/Main';
 /* Populated by react-webpack-redux:reducer */
 class App extends Component {
   render() {
-    const {actions, todos} = this.props;
-    return <Main actions={actions} todos={todos}/>;
+    const {actions, todos, params, router} = this.props;
+
+    return (
+      <Main actions={actions} todos={todos} params={params} router={router} />
+    );
   }
 }
 /* Populated by react-webpack-redux:reducer
@@ -48,4 +52,4 @@ function mapDispatchToProps(dispatch) {
   const actionMap = { actions: bindActionCreators(actions, dispatch) };
   return actionMap;
 }
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(App));

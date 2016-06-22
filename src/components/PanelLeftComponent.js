@@ -5,7 +5,7 @@ import PanelLeftItem from './PanelLeftItemComponent';
 
 class PanelLeftComponent extends React.Component {
   getItems() {
-    const { todos, actions } = this.props;
+    const { todos, actions, params } = this.props;
 
     if(!todos.lists.length) {
       return (
@@ -19,7 +19,7 @@ class PanelLeftComponent extends React.Component {
         <PanelLeftItem
           key={list.id}
           list={list}
-          activeList={todos.activeList}
+          params={params}
           selectList={() => { actions.selectList(list.id) }}
           editList={() => { actions.listModal(list) }}
         />
