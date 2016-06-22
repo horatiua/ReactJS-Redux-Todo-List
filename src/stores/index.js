@@ -1,6 +1,6 @@
 const redux = require('redux');
 const reducers = require('../reducers');
-import { applyMiddleware } from 'redux';
+import { applyMiddleware, compose } from 'redux';
 import createLogger from 'redux-logger';
 
 module.exports = function(initialState) {
@@ -11,7 +11,10 @@ module.exports = function(initialState) {
     middlewares.push(createLogger());
   }
 
-  const store = redux.createStore(reducers, initialState, applyMiddleware(...middlewares));
+  const store = redux.createStore(reducers, initialState, compose(
+    applyMiddleware(...middlewares),
+    window.devToolsExtension ? window.devToolsExtension() : f => f
+  ));
 
   if (module.hot) {
     // Enable Webpack hot module replacement for reducers
